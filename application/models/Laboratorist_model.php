@@ -1,0 +1,154 @@
+<?php if (!defined('BASEPATH'))exit('No direct script access allowed'); //This ensures the route is following the basepath
+
+class Laboratorist_model extends CI_Model {
+
+    function __construct() {
+        parent::__construct();
+
+    }
+
+      //This function selects the laboratorist from the laboratorist table in the database.
+      function select_all_laboratorists(){
+        $query = $this->db->get('laboratorist');
+            return $query->result_array();
+    }
+    /*ends here */
+
+
+  
+     //This will insert the data entered in the form into the laboratorist table.
+    function insertIntoLaboratoristTable(){   
+        $page_data['name']              = html_escape($this->input->post('name'));
+        $page_data['date_of_birth']     = strtotime($this->input->post('date_of_birth'));
+        
+        $page_data['place_of_birth']    = html_escape($this->input->post('place_of_birth'));       
+        $page_data['id_card']           = html_escape($this->input->post('id_card'));
+        $page_data['gender']            = html_escape($this->input->post('gender'));
+        $page_data['department_id']     = html_escape($this->input->post('department_id'));
+        $page_data['mother_tongue']     = html_escape($this->input->post('mother_tongue'));
+        $page_data['marital_status']    = html_escape($this->input->post('marital_status'));
+        $page_data['religion']          = html_escape($this->input->post('religion'));
+        $page_data['blood_group']       = html_escape($this->input->post('blood_group'));
+        $page_data['address']           = html_escape($this->input->post('address'));
+        $page_data['city']              = html_escape($this->input->post('city'));
+        $page_data['qualification']     = html_escape($this->input->post('qualification'));
+        $page_data['state']             = html_escape($this->input->post('state'));
+        $page_data['nationality']       = html_escape($this->input->post('nationality'));        
+        $page_data['biography']         = html_escape($this->input->post('biography'));
+
+        $page_data['email']             = html_escape($this->input->post('email'));
+        $page_data['phone']             = html_escape($this->input->post('phone'));
+        $page_data['mobile_no']         = html_escape($this->input->post('mobile_no'));
+        $page_data['password']          = sha1($this->input->post('password'));
+        $page_data['facebook']          = html_escape($this->input->post('facebook'));
+        $page_data['twitter']           = html_escape($this->input->post('twitter'));
+        $page_data['google_plus']       = html_escape($this->input->post('google_plus'));
+        $page_data['linkedin']          = html_escape($this->input->post('linkedin'));
+
+        $page_data['file_name'] = $_FILES["file_name"]["name"];
+
+
+        //Email validation
+        $check_email = $this->db->get_where('laboratorist', array('email' => $page_data['email']))->row()->email;
+        if($check_email != null || $check_email != ''){
+
+            $this->session->set_flashdata('error_message', get_phrase('Email Already Exists'));
+            redirect(base_url(). 'admin/manage_laboratorist', 'refresh');
+        }
+        else{
+
+            $this->db->insert('laboratorist', $page_data); //Inserts into the database.
+            $laboratorist_id = $this->db->insert_id();
+            move_uploaded_file($_FILES['file_name']['tmp_name'], 'uploads/laboratorist_image/' . $_FILES["file_name"]["name"]);
+            //Uploads laboratorist's image into laboratorist image folder
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/laboratorist_image/' . $laboratorist_id . '.jpg');
+
+        }
+
+
+        
+    }
+
+
+     //This will update the data entered in the form into the laboratorist database.
+    function updateLaboratoristInformation($param2){      
+        $page_data['name']              = html_escape($this->input->post('name'));
+        $page_data['date_of_birth']     = strtotime($this->input->post('date_of_birth'));
+        
+        $page_data['place_of_birth']    = html_escape($this->input->post('place_of_birth'));       
+        $page_data['id_card']           = html_escape($this->input->post('id_card'));
+        $page_data['gender']            = html_escape($this->input->post('gender'));
+        $page_data['department_id']     = html_escape($this->input->post('department_id'));
+        $page_data['mother_tongue']     = html_escape($this->input->post('mother_tongue'));
+        $page_data['marital_status']    = html_escape($this->input->post('marital_status'));
+        $page_data['religion']          = html_escape($this->input->post('religion'));
+        $page_data['blood_group']       = html_escape($this->input->post('blood_group'));
+        $page_data['address']           = html_escape($this->input->post('address'));
+        $page_data['city']              = html_escape($this->input->post('city'));
+        $page_data['qualification']     = html_escape($this->input->post('qualification'));
+        $page_data['state']             = html_escape($this->input->post('state'));
+        $page_data['nationality']       = html_escape($this->input->post('nationality'));        
+        $page_data['biography']         = html_escape($this->input->post('biography'));
+
+        $page_data['email']             = html_escape($this->input->post('email'));
+        $page_data['phone']             = html_escape($this->input->post('phone'));
+        $page_data['mobile_no']         = html_escape($this->input->post('mobile_no'));
+        $page_data['facebook']          = html_escape($this->input->post('facebook'));
+        $page_data['twitter']           = html_escape($this->input->post('twitter'));
+        $page_data['google_plus']       = html_escape($this->input->post('google_plus'));
+        $page_data['linkedin']          = html_escape($this->input->post('linkedin'));
+
+
+        $this->db->where('laboratorist_id', $param2); //Will delete based on the department_id
+        $this->db->update('laboratorist', $page_data); //Updates the database.
+
+        move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/laboratorist_image/' . $param2 . '.jpg');
+
+    }
+
+    function deleteLaboratoristInformation($param2){
+        //This will delete the data entered in the form into the department database.
+        $this->db->where('laboratorist_id', $param2); //Will delete based on the department_id
+        $this->db->delete('laboratorist'); //Updates the database.
+    }
+
+
+    function updateLaboratoristInfoFunction(){
+
+        $page_data['name']      =   html_escape($this->input->post('name'));
+        $page_data['email']     =   html_escape($this->input->post('email'));
+        $page_data['phone']     =   html_escape($this->input->post('phone'));
+        $page_data['address']   =   html_escape($this->input->post('address'));
+
+        $this->db->where('laboratorist_id', $this->session->userdata('laboratorist_id'));
+        $this->db->update('laboratorist', $page_data);
+        move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/laboratorist_image/' . $this->session->userdata('laboratorist_id') . '.jpg');
+    }
+
+
+
+    function changePasswordFunction (){
+
+        $page_data['password']       =   sha1($this->input->post('new_password'));
+        $confirm_password            =   sha1($this->input->post('confirm_new_password'));
+
+        if($page_data['password'] == $confirm_password){
+            $this->db->where('laboratorist_id', $this->session->userdata('laboratorist_id'));
+            $this->db->update('laboratorist', $page_data);
+
+        }
+
+        else{
+
+            $this->session->set_flashdata('error_message', get_phrase('Password Mismatch'));
+            redirect(base_url() . 'laboratorist/change_profile', 'refresh');
+
+        }
+    }
+    
+
+
+
+
+
+}

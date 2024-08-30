@@ -1,0 +1,200 @@
+mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 6
+Server version: 10.5.12-MariaDB-1 Debian 11
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| eHMS               |
+| fpogHospital       |
+| fpogvotesystem     |
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+6 rows in set (0.125 sec)
+
+MariaDB [(none)]> use eHMS;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [eHMS]> DROP TABLE IF EXISTS `language`;
+Query OK, 0 rows affected, 1 warning (1.124 sec)
+
+MariaDB [eHMS]> CREATE TABLE IF NOT EXISTS `language` (
+    ->   `phrase_id` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `phrase` longtext COLLATE utf8_unicode_ci NOT NULL,
+    ->   PRIMARY KEY (`phrase_id`)
+    -> ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+Query OK, 0 rows affected (0.313 sec)
+
+MariaDB [eHMS]> show tables;
++----------------+
+| Tables_in_eHMS |
++----------------+
+| ci_sessions    |
+| language       |
++----------------+
+2 rows in set (0.104 sec)
+
+MariaDB [eHMS]> DROP TABLE IF EXISTS `settings`;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+MariaDB [eHMS]> CREATE TABLE IF NOT EXISTS `settings` (
+    ->   `settings_id` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `type` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    ->   `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    ->   PRIMARY KEY (`settings_id`)
+    -> ) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=latin1;
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [eHMS]> SHOW TABLES;
++----------------+
+| Tables_in_eHMS |
++----------------+
+| ci_sessions    |
+| language       |
+| settings       |
++----------------+
+3 rows in set (0.001 sec)
+
+MariaDB [eHMS]> INSERT INTO 'settings' ('settings_id', 'type') VALUES 
+    -> (1, 'system_name'),
+    -> (2, 'system_title'),
+    -> (3, 'language');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''settings' ('settings_id', 'type') VALUES 
+(1, 'system_name'),
+(2, 'system_ti...' at line 1
+MariaDB [eHMS]> COMMIT;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [eHMS]> INSERT INTO 'settings' ('settings_id', 'type', 'description') VALUES  
+    -> (1, 'system_name', 'General Hospital, Bonny'),
+    -> (2, 'system_title', 'General Hospital, Bonny'),
+    -> (3, 'language', 'english');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''settings' ('settings_id', 'type', 'description') VALUES 
+(1, 'system_name', ...' at line 1
+MariaDB [eHMS]> COMMIT;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [eHMS]> INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
+    -> (1, 'system_name', 'COMPLETE ERP SOFTWARE'),
+    -> (2, 'system_title', 'COMPLETE ERP SOFTWARE'),
+    -> (3, 'language', 'english');
+Query OK, 3 rows affected (0.216 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [eHMS]> COMMIT;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [eHMS]> SELECT FROM
+    -> SELECT * FROM 'settings';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM
+SELECT * FROM 'settings'' at line 1
+MariaDB [eHMS]> SELECT FROM SELECT * FROM settings
+    -> SELECT FROM SELECT * FROM settings;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM SELECT * FROM settings
+SELECT FROM SELECT * FROM settings' at line 1
+MariaDB [eHMS]> SELECT * FROM settings;
++-------------+--------------+-----------------------+
+| settings_id | type         | description           |
++-------------+--------------+-----------------------+
+|           1 | system_name  | COMPLETE ERP SOFTWARE |
+|           2 | system_title | COMPLETE ERP SOFTWARE |
+|           3 | language     | english               |
++-------------+--------------+-----------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [eHMS]> DELETE FROM settings;
+Query OK, 3 rows affected (0.001 sec)
+
+MariaDB [eHMS]> SELECT * FROM settings;
+Empty set (0.000 sec)
+
+MariaDB [eHMS]> INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
+    -> (1, 'system_name', 'General Hospital, Bonny'),
+    -> (2, 'system_title', 'General Hospital, Bonny'),
+    -> (3, 'language', 'english');
+Query OK, 3 rows affected (0.000 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [eHMS]> COMMIT;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [eHMS]> SELECT * FROM settings;
++-------------+--------------+-------------------------+
+| settings_id | type         | description             |
++-------------+--------------+-------------------------+
+|           1 | system_name  | General Hospital, Bonny |
+|           2 | system_title | General Hospital, Bonny |
+|           3 | language     | english                 |
++-------------+--------------+-------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [eHMS]> DROP TABLE IF EXISTS `admin`;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+MariaDB [eHMS]> CREATE TABLE IF NOT EXISTS `admin` (
+    ->   `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+    ->   `name` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    ->   `email` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    ->   `password` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    ->   `status` int(11) NOT NULL,
+    ->   PRIMARY KEY (`admin_id`)
+    -> ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+Query OK, 0 rows affected (0.003 sec)
+
+MariaDB [eHMS]> SHOW TABLES;
++----------------+
+| Tables_in_eHMS |
++----------------+
+| admin          |
+| ci_sessions    |
+| language       |
+| settings       |
++----------------+
+4 rows in set (0.001 sec)
+
+MariaDB [eHMS]> INSERT INTO `admin` (`admin_id`, `name`, `email`, `password`, `status`) VALUES
+    -> (1, 'Administrator', 'delightenyinnaya1@gmail.com', '1234', 0);
+Query OK, 1 row affected (0.039 sec)
+
+MariaDB [eHMS]> SELECT * FROM admin
+    -> SELECT * FROM admin;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELECT * FROM admin' at line 2
+MariaDB [eHMS]> SELECT * FROM admin;
++----------+---------------+-----------------------------+----------+--------+
+| admin_id | name          | email                       | password | status |
++----------+---------------+-----------------------------+----------+--------+
+|        1 | Administrator | delightenyinnaya1@gmail.com | 1234     |      0 |
++----------+---------------+-----------------------------+----------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [eHMS]> DELETE FROM admin;
+Query OK, 1 row affected (0.000 sec)
+
+MariaDB [eHMS]> SELECT * FROM admin;
+Empty set (0.000 sec)
+
+MariaDB [eHMS]> INSERT INTO `admin` (`admin_id`, `name`, `email`, `password`, `status`) VALUES
+    -> (1, 'Administrator', 'delightenyinnaya1@gmail.com', sha1('1234'), 0);
+Query OK, 1 row affected (0.133 sec)
+
+MariaDB [eHMS]> SELECT * FROM admin;
++----------+---------------+-----------------------------+------------------------------------------+--------+
+| admin_id | name          | email                       | password                                 | status |
++----------+---------------+-----------------------------+------------------------------------------+--------+
+|        1 | Administrator | delightenyinnaya1@gmail.com | 7110eda4d09e062aa5e4a390b0a572ac0d2c0220 |      0 |
++----------+---------------+-----------------------------+------------------------------------------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [eHMS]> 
+
