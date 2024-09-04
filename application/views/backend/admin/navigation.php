@@ -53,7 +53,7 @@
                 <!-- 
                     THESE CONTROL THE NAVIGATION MENU AND THE MODULE FUNCTIONS IN THE DASHBOARD
                 -->
-                    <li> 
+                <li> 
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-plus p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Manage Department');?> <span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level"<?php if($page_name == 'manage_department') echo 'active';?>>
 
@@ -66,8 +66,8 @@
                     </ul>
                 </li>
 
-                 <li> 
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Human Resources');?> <span class="fa arrow"></span></span></a>
+                <li> 
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Manage Staff');?> <span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level"<?php if($page_name == 'manage_doctor') echo 'active';?>>
 
                             <li class="<?php if($page_name == 'manage_doctor') echo 'active';?>"> 
@@ -123,6 +123,22 @@
                     </ul>
                 </li>
 
+                <!-- For Retainerships menu -->
+                <li> 
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-plus p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Manage Retainerships');?> <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level"<?php if($page_name == 'manage_department') echo 'active';?>>
+
+                            <li class="<?php if($page_name == 'manage_department') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>department/manage_department">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu"><?php echo get_phrase('manage_Comapnies');?></span>
+                            </a> 
+                            </li>
+                    </ul>
+                </li>
+
+                 
+
 
 
                 <li> 
@@ -145,28 +161,104 @@
                     </ul>
                 </li>
 
+                <!-- This side menu is for accessing the regular patients enrolled in the hospital  -->
 
                 <li> 
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Manage Patient');?> <span class="fa arrow"></span></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Regular Patients');?> <span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level"<?php if($page_name == 'add_patient' 
                      || $page_name == 'edit_patient' || $page_name == 'list_patient') echo 'active';?>>
 
                             <li class="<?php if($page_name == 'add_patient') echo 'active';?>"> 
                             <a href="<?php echo base_url();?>patient/add_patient">
                             <i class="fa fa-angle-double-right p-r-10"></i>
-                            <span class="hide-menu"><?php echo get_phrase('Add Patient');?></span>
+                            <span class="hide-menu" title="Open New Folder"><?php echo get_phrase('Add New Patient');?></span>
                             </a> 
                             </li>
 
                             <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
                             <a href="<?php echo base_url();?>patient/list_patient">
                             <i class="fa fa-angle-double-right p-r-10"></i>
-                            <span class="hide-menu"><?php echo get_phrase('List Patient');?></span>
+                            <span class="hide-menu"><?php echo get_phrase('List Patients');?></span>
                             </a> 
                             </li>
 
                     </ul>
                 </li>
+
+
+                <!-- This Menu is for accessing the Medical Patients from Companies -->
+
+                <li> 
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users p-r-10"></i> <span class="hide-menu" title="Fitness-to-Work"> <?php echo get_phrase('Manage Medicals');?> <span class="fa arrow"></span></span></a>
+                    <ul class="nav nav-second-level"<?php if($page_name == 'add_patient' 
+                     || $page_name == 'edit_patient' || $page_name == 'list_patient') echo 'active';?>>
+
+                            <li class="<?php if($page_name == 'add_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/add_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Open New Folder"><?php echo get_phrase('Add New Medicals');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add Physical Examination and Vital Signs"><?php echo get_phrase('Add Physical/Vitals');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add X-Ray Reports"><?php echo get_phrase('Add X-Ray');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add All Lab Test Results"><?php echo get_phrase('Add Lab Results');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add Spirometry Tests Data"><?php echo get_phrase('Add Spirometry');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add Audiometry Remarks"><?php echo get_phrase('Add Audiometry');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add ECG Outcome/Remarks"><?php echo get_phrase('Add ECG');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Verify and Certify Medical Results"><?php echo get_phrase('Verify/Certify');?></span>
+                            </a> 
+                            </li>
+
+                            <li class="<?php if($page_name == 'list_patient') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>patient/list_patient">
+                            <i class="fa fa-angle-double-right p-r-10"></i>
+                            <span class="hide-menu" title="Add Physical Examination and Vital Signs"><?php echo get_phrase('Completed Medicals');?></span>
+                            </a> 
+                            </li>
+
+                    </ul>
+                </li>
+
 
 
                 <li> 

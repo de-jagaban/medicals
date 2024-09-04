@@ -12,7 +12,7 @@ $system_title = $this->db->get_where('settings', array('type' => 'system_title')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="An enhanced Hospital Management system ">
 <meta name="author" content="WITTY INVENTIONS DIGITAL AGENCY">
-<link rel="icon"  sizes="16x16" href="<?php echo base_url() ?>uploads/gh-logo.png">
+<link rel="icon"  sizes="16x16" href="<?php echo base_url() ?>uploads/DSH-logo.png">
     <title><?php echo $system_title;?></title> <!-- Echo system title from the database --> 
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,8 +52,8 @@ $system_title = $this->db->get_where('settings', array('type' => 'system_title')
         </div>
 	 <br><br><br>
         <!-- Login Form -->
-					<img src="<?php echo base_url() ?>uploads/hospital-logo.png" width="300" height="70"/></h4>
-					<h3 align="center"><a href=""><?php echo $system_name;?></a></h3> <!-- Echo system name from the database --> 
+					<img src="<?php echo base_url() ?>uploads/DSH-logo.png" width="150" height="100"/></h4>
+					<h3 align="center"><b><a href=""><?php echo $system_name;?></a></b></h3> <!-- Echo system name from the database --> 
 					<br>
 
                     <div> 
