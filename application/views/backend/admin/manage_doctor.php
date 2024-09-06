@@ -143,40 +143,25 @@
                                             <h4 class="m-t-30">Education</h4> 
                                             <hr />
                                             <ul>
-                                            <li>M.B.B.S from AIIMS</li>
-                                            <li>M.B.B.S from AIIMS</li>
-                                            <li>M.D from AIIMS</li>
-                                            <li>D.N.B AIIMS</li>
-                                            <li>M.S from AIIMS</li>
-                                            <li>D.N.B from AIIMS</li>
+                                            <li>Add Educational Qualifications</li>
+                                            <li>Add Educational Qualifications</li>
                                             </ul>
                                             <h4 class="m-t-30">Experience</h4>
                                             <hr />
                                             <ul>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
+                                            <li>Add Doctor's Experience</li>
+                                            <li>Add Doctor's Experience</li>
                                             </ul>
                                             <h4 class="m-t-30">Accomplishments</h4>
                                             <hr />
                                             <ul>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                            <li>Excepteur sint occaecat cupidatat non proident.</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                            <li>Add Accomplishments here</li>
+                                            <li>Add Accomplishments here</li>
                                             </ul>
                                             <h4 class="m-t-30">Skill Set</h4>
                                             <hr />
-                                            <h5>Wordpress <span class="pull-right">80%</span></h5>
-                                            <h5>HTML 5 <span class="pull-right">90%</span></h5>
-                                            <h5>jQuery <span class="pull-right">50%</span></h5>
-                                            <h5>Photoshop <span class="pull-right">70%</span></h5>
+                                            <h5>Add Skills Here <span class="pull-right">80%</span></h5>
+                                            <h5>Add Skills Here <span class="pull-right">80%</span></h5>
                                             </div>
                                             </div>
                                         </textarea>
@@ -184,9 +169,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-12" for="example-text"><?php echo get_phrase('document');?></label>
+                                    <label class="col-sm-12" for="example-text"><?php echo get_phrase("Doctor's Signature");?></label>
                                         <div class="col-sm-12">
-                                            <input type="file" name="file_name" data-label="<i class='glyphicon glyphicon-file'></i> Browse" />
+                                            <input type="file" name="file_name" title="Upload Doctor's Scanned Signature" data-label="<i class='glyphicon glyphicon-file'></i> Browse" required>
                                         </div>
                                 </div>
 
@@ -195,7 +180,7 @@
                                 <div class="form-group"> 
                                     <label class="col-sm-12"><?php echo get_phrase('browse_image');?>*</label>        
                                         <div class="col-sm-12">
-                                            <input type='file' class="form-control" name="userfile" onChange="readURL(this);" /required>
+                                            <input type='file' class="form-control" name="userfile" onChange="readURL(this);" required>
                                             <img id="blah" src="#" alt="" height="200" width="200"/>
                                         </div>
                                 </div>	

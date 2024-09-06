@@ -190,11 +190,11 @@
 
                 <li> 
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-users p-r-10"></i> <span class="hide-menu" title="Fitness-to-Work"> <?php echo get_phrase('Manage Medicals');?> <span class="fa arrow"></span></span></a>
-                    <ul class="nav nav-second-level"<?php if($page_name == 'add_patient' 
+                    <ul class="nav nav-second-level"<?php if($page_name == 'add_medicals' 
                      || $page_name == 'edit_patient' || $page_name == 'list_patient') echo 'active';?>>
 
-                            <li class="<?php if($page_name == 'add_patient') echo 'active';?>"> 
-                            <a href="<?php echo base_url();?>patient/add_patient">
+                            <li class="<?php if($page_name == 'add_medicals') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>medicals/add_medicals">
                             <i class="fa fa-angle-double-right p-r-10"></i>
                             <span class="hide-menu" title="Open New Folder"><?php echo get_phrase('Add New Medicals');?></span>
                             </a> 
