@@ -126,10 +126,10 @@
                 <!-- For Retainerships menu -->
                 <li> 
                     <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-plus p-r-10"></i> <span class="hide-menu"> <?php echo get_phrase('Manage Retainerships');?> <span class="fa arrow"></span></span></a>
-                    <ul class="nav nav-second-level"<?php if($page_name == 'manage_department') echo 'active';?>>
+                    <ul class="nav nav-second-level"<?php if($page_name == 'manage_retainership') echo 'active';?>>
 
-                            <li class="<?php if($page_name == 'manage_department') echo 'active';?>"> 
-                            <a href="<?php echo base_url();?>department/manage_department">
+                            <li class="<?php if($page_name == 'manage_retainership') echo 'active';?>"> 
+                            <a href="<?php echo base_url();?>retainership/manage_retainership">
                             <i class="fa fa-angle-double-right p-r-10"></i>
                             <span class="hide-menu"><?php echo get_phrase('manage_Comapnies');?></span>
                             </a> 

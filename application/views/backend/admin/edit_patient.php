@@ -173,7 +173,7 @@
                                 <div class="form-group">
                                     <label class="col-md-12"><?php echo get_phrase('diagnose');?></label>
                                     <div class="col-md-12">
-                                        <textarea class="form-control " rows="5" name="diagnose"><?php echo $patient['diagnose'];?></textarea>
+                                        <textarea class="form-control" rows="5" name="diagnose"><?php echo $patient['diagnose'];?></textarea>
                                     </div>
                                 </div>                   
 
